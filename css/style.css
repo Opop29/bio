@@ -10,9 +10,10 @@ html{
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color:rgba(0,0,0,0.5);
+    background-color:rgba(0,0,0,0.8);
     position: sticky;
     top: 0;
+    z-index: 1000;
 }
 .navbar ul{
     display: flex;
@@ -20,15 +21,16 @@ html{
     margin: 20px 0px;
 }
 .navbar ul li{
-    font-family: century;
+    font-family: 'Century Gothic', sans-serif; /* Use a common font and add fallbacks */
     font-size: 1.1rem;
     font-weight: bold;
+    margin: 0 15px;
 }
 .navbar ul li a{
     text-decoration: none;
     color: white;
     padding: 8px 25px;
-    transition: all .5s ease;
+    transition: background-color 0.5s ease, color 0.5s ease, box-shadow 0.5s ease;
 }
 .navbar ul li a:hover{
     background-color: aqua;
@@ -38,11 +40,14 @@ html{
 #home{
     display: flex;
     flex-direction: column;
-    background-color: rgba(0,0,0,0.5);
-    height: 840px;
+    background-color: rgba(0, 0, 0, 0.5);
+    height: 100vh;
     justify-content: center;
     align-items: center;
     color: white;
+    position: relative;
+    text-align: center;
+    overflow: hidden; /* Hide overflowing content */
 }
 #home::before{
     content: "";
@@ -53,7 +58,7 @@ html{
     height: 900px;
     width: 100%;
     z-index: -1;
-    opacity: .8;
+    opacity: 0.8;
 }
 .main{
     display: flex;
@@ -69,6 +74,14 @@ html{
     text-align: center;
     margin: 40px 0px;
 }
+.main1{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    top: 30%;
+    left: 10%;
+}
 .btn{
     padding: 10px 35px;
     background-color: transparent;
@@ -77,6 +90,91 @@ html{
     outline: none;
     transition: .6s ease;
 }
+/* Add this style to your existing CSS or create a new CSS file */
+.overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    justify-content: center;
+    align-items: center;
+}
+/* Add this style to your existing CSS or create a new CSS file */
+.glowing-effect {
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background: rgba(0, 0, 255, 0.5); /* Initial blue color */
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+    mix-blend-mode: overlay;
+    animation: glowing 1s infinite;
+    transition: background 0.3s ease-out;
+}
+
+.glowing-effect.clicked {
+    background: rgba(255, 255, 0, 1); /* Bright yellow color on click */
+    animation: explode 0.5s forwards;
+}
+
+@keyframes glowing {
+    0% {
+        box-shadow: 0 0 5px 0px rgba(0, 0, 255, 0.5);
+    }
+    50% {
+        box-shadow: 0 0 20px 10px rgba(0, 0, 255, 0);
+    }
+    100% {
+        box-shadow: 0 0 5px 0px rgba(0, 0, 255, 0.5);
+    }
+}
+
+@keyframes explode {
+    to {
+        width: 200px;
+        height: 200px;
+        background: rgba(255, 255, 0, 1);
+    }
+}
+.flying-heart {
+    position: absolute;
+    width: 80px; /* Increase the size */
+    height: 80px; /* Increase the size */
+    background-image: url('../media/fly.gif'); /* Replace with the path to your heart image */
+    background-size: cover;
+    animation: flyAround 8s ease-out infinite;
+}
+
+@keyframes flyAround {
+    0% {
+        transform: translate(0, 0) scale(1);
+    }
+    25% {
+        transform: translate(calc(50vw - 30px), calc(-50vh + 30px)) scale(1.5);
+    }
+    50% {
+        transform: translate(calc(100vw - 45px), 0) scale(1.8);
+    }
+    75% {
+        transform: translate(calc(50vw - 30px), calc(50vh - 30px)) scale(1.5);
+    }
+    100% {
+        transform: translate(0, 0) scale(1);
+    }
+}
+.modal {
+    background: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    text-align: center;
+}
+
+/* Add more styles as needed */
+
 .btn:hover{
     cursor: pointer;
     background-color: white;
@@ -84,28 +182,68 @@ html{
     box-shadow: 0 0 5px white, 0 0 10px white, 0 0 15px white;
     font-weight: bold;
 }
-#about{
-    display: flex;
-    flex-direction: column;
-    box-sizing: border-box;
-    padding: 20px;
-    margin-bottom: 50px;
+.btn1{
+    padding: 10px 35px;
+    background-color: transparent;
+    border: 1px solid white;
+    color: white;
+    outline: none;
+    transition: .6s ease;
 }
-#pic{
-    display: flex;
+.btn1:hover{
+    cursor: pointer;
+    background-color: white;
+    color: black;
+    box-shadow: 0 0 5px white, 0 0 10px white, 0 0 15px white;
+    font-weight: bold;
 }
-#pic img{
-    width: 575px;
-    height: 400px;
+#about {
+    background-color: #f8f8f8;
+    padding: 50px 0;
 }
-#intro{
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.headings {
+    color: #ffffff;
+}
+.heading {
+    color: #000000;
+    font-family: century;
+    font-size: 3rem;
+    text-align: center;
+    margin: 40px 0px;
+}
+
+.about-content {
     display: flex;
-    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-top: 30px;
+}
+
+.about-image img {
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+.intro-text {
+    flex: 1;
     text-align: justify;
-    padding: 10px;
+    padding: 20px;
 }
-#intro h2{
-    font-size: Zrem;
+
+.intro-text h2 {
+    font-size: 2rem;
     margin-bottom: 20px;
 }
 #portfolio{
