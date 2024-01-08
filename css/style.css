@@ -105,3 +105,37 @@
     font-size: Zrem;
     margin-bottom: 20px;
 }
+#portfolio{
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(0,0,0,0.5);
+    color: white;
+    align-items: center;
+    padding: 20px;
+}
+.gallery{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    box-sizing: border-box;
+}
+.gallery img{
+    width: 360px;
+    height: 240px;
+    margin: 10px;
+}
+#service{
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+.row{
+    display: flex;
+}
+.box{
+    display: flex;
+    flex-direction: column;
+    width: 350px;
+    height: 450px;
+    border: 1px solid black;
+}
