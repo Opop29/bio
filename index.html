@@ -5,16 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LovelyAndJoshua.bio</title>
     <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet"  media="screen and (max-width:800px)"  href="./css/table.css">
+    <link rel="stylesheet"  media="screen and (max-width:530px)"  href="./css/phone.css">
 </head>
 <body>
 
     <nav class="navbar">
         <ul>
-            <li><a href="#home">Home</a></li>
-            <li><a href="#about">About Us</a></li>
-            <li><a href="#portfolio">Portfolio</a></li>
-            <li><a href="#services">Services</a></li>
-            <li><a href="#contacts">Contact Me</a></li>
+            <li><a href="#home" onclick="navigateTo('home')">Home</a></li>
+            <li><a href="#about"onclick="navigateTo('about')">About Us</a></li>
+            <li><a href="#portfolio" onclick="navigateTo('portfolio')">Portfolio</a></li>
+            <li><a href="#services" onclick="navigateTo('services')">Services</a></li>
+            <li><a href="#contacts" onclick="navigateTo('contacts')">Contact Me</a></li>
         </ul>
     </nav>
 
@@ -90,5 +92,8 @@
             <input type="submil" value="SEND" id="send">
         </form>
 </section>
+
+<script src="./js/app.js"></script>
+
 </body>
 </html>
